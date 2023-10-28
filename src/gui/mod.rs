@@ -1,6 +1,7 @@
 use std::result;
-
 use eframe::egui::{self, Context, ScrollArea, Ui};
+
+mod directory_popup;
 
 pub fn launch() {
     let native_options = eframe::NativeOptions::default();
