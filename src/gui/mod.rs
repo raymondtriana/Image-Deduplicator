@@ -44,6 +44,12 @@ fn render_menu_bar(ctx: &Context){
         egui::menu::bar(ui, |ui| {
             ui.menu_button("File", |ui| {
                 if ui.button("Open Directory").clicked() {
+                    //OPEN DIRECTORY BUTTON HAS BEEN CLICKED
+                }
+            });
+            ui.menu_button("Edit", |ui|{
+                if ui.button("Settings").clicked(){
+                    //SETTINGS BUTTON HAS BEEN CLICKED
                 }
             });
         });
