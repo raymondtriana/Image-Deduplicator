@@ -33,21 +33,32 @@ impl MyApp {
 
 impl eframe::App for MyApp {
     fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
-        render_header(ctx);
+        render_menu_bar(ctx);
         render_side_panel(ctx);
         render_cental_panel(ctx);
     }
 }
 
+fn render_menu_bar(ctx: &Context){
+    egui::TopBottomPanel::top("main_header").show(ctx, |ui| {
+        egui::menu::bar(ui, |ui| {
+            ui.menu_button("File", |ui| {
+                if ui.button("Open Directory").clicked() {
+                }
+            });
+        });
+    });
+}
+
 fn render_cental_panel(ctx: &Context){
     egui::CentralPanel::default().show(ctx, |ui|{
-        render_scroll_area(ui, ctx)
+        ui.label("CENTRAL PANEL");
     });
 }
 
 fn render_side_panel(ctx: &Context){
     egui::SidePanel::left("side_panel_left").show(ctx, |ui|{
-        ui.label("text");
+        render_scroll_area(ui, ctx);
     });
 }
 
@@ -56,14 +67,5 @@ fn render_scroll_area(ui:&mut Ui, ctx: &Context){
         for a in (0..200) {
             ui.label("Hello World!");
         }
-    });
-}
-
-fn render_header(ctx: &Context) {
-    let header_widget = egui::TopBottomPanel::top("main_header").show(ctx, |ui| {
-        ui.vertical_centered(|ui| {
-            ui.add_space(100.0);
-        });
-        ui.label("text");
     });
 }
